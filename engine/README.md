@@ -1,0 +1,1 @@
+Please use [Pipfile](https://github.com/pypa/pipfile) or something similar so that it's easy to install dependencies of this project.
