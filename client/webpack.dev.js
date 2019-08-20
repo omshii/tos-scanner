@@ -9,7 +9,7 @@ exports.default = merge(common, {
     mode: "development",
     devServer: {
         hot: true,
-        port: 8081,
+        port: 3001,
         historyApiFallback: true
     },
     plugins: [
