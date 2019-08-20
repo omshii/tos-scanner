@@ -4,7 +4,7 @@ const git = require("git-rev-sync");
 
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin").default;
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
 
 const output = path.resolve(__dirname, "dist");
@@ -95,17 +95,12 @@ exports.default = {
                     image: 'xlink:href'
                 }
             }
-        },
-        {
-            test: /\.g(raph)?ql$/,
-            loader: "graphql-tag/loader"
         }]
     },
     resolve: {
         extensions: [".vue", ".ts", ".js"],
         alias: {
             "vue$": "vue/dist/vue.esm.js",
-            "@shared": "@winston/client-shared/src",
             "@lib": path.join(__dirname, "src/lib"),
             "@component": path.join(__dirname, "src/component"),
             "@control": path.join(__dirname, "src/component/control"),

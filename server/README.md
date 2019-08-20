@@ -1,2 +1,2 @@
 # How to use this code
-Run `npm install` followed by `npm run serve:dev` to compile and run the server.
+Run `npm install`, `npm run build:dev`, then `npm run serve:dev` in this directory to compile and run the server. If you want to see the actual website, then you also need to run `npm run build:dev` in the client directory first.

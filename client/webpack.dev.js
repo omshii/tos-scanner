@@ -10,13 +10,7 @@ exports.default = merge(common, {
     devServer: {
         hot: true,
         port: 8081,
-        historyApiFallback: true,
-        proxy: {
-            "/graphql": "http://uniongrove.lvh.me:8080"
-        },
-        allowedHosts: [
-            '.lvh.me'
-        ]
+        historyApiFallback: true
     },
     plugins: [
         new HardSourceWebpackPlugin(),

@@ -1,7 +1,6 @@
 const merge = require("webpack-merge");
 const { default: common, revision } = require("./webpack.common");
 const { DefinePlugin } = require("webpack");
-const { join } = require("path");
 
 const CompressionPlugin = require("compression-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");

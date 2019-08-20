@@ -18,13 +18,17 @@ const options = yargs
 // set up logging
 const logger = pino();
 
+if (options.dev) {
+    logger.info("development mode active");
+    logger.level = "trace"; // enable more verbose logging
+}
+
 // initialize server
 const server = new Koa();
 
-server.use(KoaStatic(path.resolve(__dirname, "../../client")))
+const staticPath = path.resolve(__dirname, "../../client/dist");
+server.use(KoaStatic(staticPath));
+logger.debug(`serving from ${staticPath}`);
 
 server.listen(process.env.PORT || 3000);
 logger.info("server started on port 3000");
-
-if (options.dev)
-    logger.info("development mode active");
