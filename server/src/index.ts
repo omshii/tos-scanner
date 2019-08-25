@@ -1,10 +1,12 @@
 import * as Koa from "koa";
 import * as KoaStatic from "koa-static";
 import * as KoaRouter from "koa-router";
+import * as KoaBodyParser from "koa-bodyparser";
 
 import * as pino from "pino";
 import * as yargs from "yargs";
 import * as path from "path";
+import { performance } from "perf_hooks";
 import api from "./api/index";
 
 // get command line options
@@ -29,6 +31,21 @@ if (options.dev) {
 // initialize server
 const server = new Koa();
 const router = new KoaRouter();
+
+// logging
+server.use(async (ctx, next) => {
+    try {
+        const start = performance.now();
+        await next();
+        const end = performance.now();
+        logger.trace(`request: ${ctx.method} ${ctx.path} ${ctx.status} ${end - start}ms`);
+    } catch (error) {
+        logger.error(`request: ${ctx.method} ${ctx.path}`, { error });
+    }
+});
+
+// initialize body parsing
+server.use(KoaBodyParser({ enableTypes: ["text"] }));
 
 // initialize routing
 router.use("/api", api.routes());

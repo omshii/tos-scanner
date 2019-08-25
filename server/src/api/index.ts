@@ -4,6 +4,6 @@ import upload from "./upload";
 
 const routes = new KoaRouter();
 
-routes.post("upload", upload);
+routes.post("/upload", upload);
 
 export default routes;
