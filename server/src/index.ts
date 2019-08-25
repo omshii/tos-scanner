@@ -1,8 +1,11 @@
 import * as Koa from "koa";
 import * as KoaStatic from "koa-static";
+import Router from "koa-router";
+
 import * as pino from "pino";
 import * as yargs from "yargs";
 import * as path from "path";
+import api from "@api/index";
 
 // get command line options
 const options = yargs
@@ -26,8 +29,13 @@ if (options.dev) {
 // initialize server
 const server = new Koa();
 
+const router = new Router();
+
 const staticPath = path.resolve(__dirname, "../../client/dist");
 server.use(KoaStatic(staticPath));
+
+router.use("/api", api.routes());
+
 logger.debug(`serving from ${staticPath}`);
 
 server.listen(process.env.PORT || 3000);
