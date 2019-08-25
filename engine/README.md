@@ -1,1 +1,1 @@
-In order to install the dependencies of this project, install [Poetry](https://github.com/sdispater/poetry) and then run `poetry install`.
+In order to install the dependencies of this project, install [Poetry](https://github.com/sdispater/poetry) and then run `poetry install` followed by `poetry shell`. This will install our Python script's dependencies into a virtual environment and then launch a shell in which that venv is active, so the script can be run as normal.

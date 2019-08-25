@@ -1,20 +1,20 @@
 from acora import AcoraBuilder 
+import sys
 
 class TOSAnalyzer: 
-    wordBank = ["ownership", "owner", "own", "propietary", "tracking", "track", "store", "keep", "keeping"]
-    builder = AcoraBuilder()
-    builder.add(wordBank)
-    finder = builder.build
-
-    def __init__(self, termsOfService):
-        this.termsOfService = termsOfService.tolower()
+    def __init__(self, text):
+        self.text = text
+        keywords = ["ownership", "owner", "own", "propietary", "tracking", "track", "store", "keep", "keeping"]
+        builder = AcoraBuilder()
+        builder.add(*keywords)
+        self.finder = builder.build()
         
-    def findTOS(self):
-        keywords = finder.findall(termsOfService)
-        return keywords
-    
-    def display(self):
-        print("Your terms of services may have some suspicious keywords.")
-        for index in range(len(keywords)):
-            if keywords[index][1] >= 1:
-                print(keywords[0][index])
+    def find(self):
+        return self.finder.findall(self.text)
+
+# read ToS from stdin and feed them to the TOS analyzer
+analyzer = TOSAnalyzer(sys.stdin.read())
+
+# for each match, output the start and end positions
+for kw, pos in analyzer.find():
+    print(f"{pos}:{pos+len(kw)}")
