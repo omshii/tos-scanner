@@ -5,7 +5,7 @@ import * as KoaRouter from "koa-router";
 import * as pino from "pino";
 import * as yargs from "yargs";
 import * as path from "path";
-import api from "@api/index";
+import api from "./api/index";
 
 // get command line options
 const options = yargs
