@@ -1,8 +1,8 @@
-import Router from "koa-router";
+import * as KoaRouter from "koa-router";
 
 import upload from "./upload";
 
-const routes = new Router();
+const routes = new KoaRouter();
 
 routes.post("upload", upload);
 
